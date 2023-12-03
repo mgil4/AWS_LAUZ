@@ -47,11 +47,7 @@ def calculate_term_frequency(documents):
         term_frequency.update(doc)
     return term_frequency
 
-subset["preprocessed"] = subset["Reviews"].apply(preprocess)
-tf_group = [calculate_term_frequency(subset["preprocessed"][subset["cluster"] == i]) for i in range(3)]
-terms_group_more = [{term: tf_group[i][term] for term in tf_group[i] if tf_group[i][term] > tf_group[(i+1)%3][term] 
-                        and tf_group[i][term] > tf_group[(i+2)%3][term]} for i in range(3)]
-terms_group_more = [sorted(cnt.items(), key=lambda x: x[1], reverse=True) for cnt in terms_group_more]
+
 
 def get_projection(mobile_name):
     subset = df[df["Product Name"] == mobile_name]
@@ -92,3 +88,4 @@ def get_projection(mobile_name):
                 rating_words[i][word[0]] = round(reviews["Rating"].mean(), 2)
 
     subset["labels"] = [str(rating_words[c]).replace(',', '<br>') for c in clusters]
+    subset[["Product Name", "x", "y", "z", "cluster", "labels"]].to_csv("project.csv")

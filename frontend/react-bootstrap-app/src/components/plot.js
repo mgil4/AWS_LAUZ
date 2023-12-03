@@ -13,7 +13,7 @@ const  Scatter3D = (props) => {
     const yData = props.productInfo.map(entry => entry.y);
     const zData = props.productInfo.map(entry => entry.z);
     const cData = props.productInfo.map(entry => entry.cluster);
-    const tData = props.productInfo.map(entry => entry.Rating);
+    const tData = props.productInfo.map(entry => entry.labels);
 
     // Crear un objeto de rastreo para el gráfico 3D
     const trace = {
