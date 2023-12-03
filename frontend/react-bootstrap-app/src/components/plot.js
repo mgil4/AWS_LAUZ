@@ -1,6 +1,7 @@
 import React, { useRef, useState} from 'react';
 import Plot from 'react-plotly.js';
-const Scatter3D  = ({ data }) => {
+
+const  Scatter3D = (props) => {
 
     const hardcodedData = [
         { x: 1, y: 2, z: 3, c: 1, t: 'Punto 1' },
@@ -8,12 +9,11 @@ const Scatter3D  = ({ data }) => {
         { x: 3, y: 4, z: 5, c: 1, t: 'Punto 3' },
         { x: 4, y: 5, z: 6, c: 2, t: 'Punto 4' },];
 
-    // Extraer las columnas x, y, z, c, t del conjunto de datos
-    const xData = hardcodedData.map(entry => entry.x);
-    const yData = hardcodedData.map(entry => entry.y);
-    const zData = hardcodedData.map(entry => entry.z);
-    const cData = hardcodedData.map(entry => entry.c);
-    const tData = hardcodedData.map(entry => entry.t);
+    const xData = props.productInfo.map(entry => entry.x);
+    const yData = props.productInfo.map(entry => entry.y);
+    const zData = props.productInfo.map(entry => entry.z);
+    const cData = props.productInfo.map(entry => entry.cluster);
+    const tData = props.productInfo.map(entry => entry.Rating);
 
     // Crear un objeto de rastreo para el gráfico 3D
     const trace = {

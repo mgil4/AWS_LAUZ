@@ -34,7 +34,7 @@ const MyForm = () => {
             <UploadButton onClick={handleButtonClick}/>
             </div>
             <br/>
-            {data !== null && <Scatter3D />}
+            {data !== null && <Scatter3D productInfo={data} />}
         </div>
 
     );
