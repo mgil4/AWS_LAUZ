@@ -89,3 +89,4 @@ def get_projection(mobile_name):
 
     subset["labels"] = [str(rating_words[c]).replace(',', '<br>') for c in clusters]
     subset[["Product Name", "x", "y", "z", "cluster", "labels"]].to_csv("project.csv")
+    print(subset['labels'])
